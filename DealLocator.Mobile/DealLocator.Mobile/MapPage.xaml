@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DealLocator.Mobile.MapPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:local="clr-namespace:DealLocator.Mobile;assembly=DealLocator.Mobile"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            x:Name="FiltersButton"
+            Clicked="FiltersButton_Clicked"
+            Text="Filters" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <local:CustomMap
+            x:Name="customMap"
+            HeightRequest="{x:Static local:App.ScreenHeight}"
+            MapType="Street"
+            WidthRequest="{x:Static local:App.ScreenWidth}" />
+    </ContentPage.Content>
+</ContentPage>
+

@@ -1,0 +1,47 @@
+@using System.Security.Principal
+@using Microsoft.AspNetCore.Authentication.AzureADB2C.UI
+@using Microsoft.Extensions.Options
+@using System.Security.Claims;
+@inject IOptionsMonitor<AzureADB2COptions> AzureADB2COptions
+
+@{
+    var options = AzureADB2COptions.Get(AzureADB2CDefaults.AuthenticationScheme);
+}
+
+
+    <ul class="navbar-nav">
+        @if (User.Identity.IsAuthenticated)
+        {
+            @if (!string.IsNullOrEmpty(options.EditProfilePolicyId))
+            {
+
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="AzureADB2C" asp-controller="Account" asp-action="EditProfile">
+                        <span class="nav-text text-dark">Hello @User.Identity.Name!</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Deal" asp-action="Index" asp-route-id="@User.FindFirst(ClaimTypes.NameIdentifier).Value">Dashboard</a>
+                </li>
+                @*<li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="CheckBusiness" >Check</a>
+                </li>*@
+            }
+            else
+            {
+                <li class="nav-item">
+                    <span class="nav-text text-dark">Hello @User.Identity.Name!</span>
+                </li>
+
+            }
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="AzureADB2C" asp-controller="Account" asp-action="SignOut">Sign out</a>
+            </li>
+        }
+        else
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="AzureADB2C" asp-controller="Account" asp-action="SignIn">Sign in</a>
+            </li>
+        }
+    </ul>

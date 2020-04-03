@@ -1,0 +1,88 @@
+﻿
+@model IEnumerable<Domain.Deal>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" asp-route-id=@ViewData["BusinessId"]>Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Duration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+                     
+            <th>
+                @Html.DisplayNameFor(model => model.DealStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+          
+          
+            <td>
+                @if (item.DealStatus.Equals(Domain.DealStatus.Active))
+                {
+
+                    <label class="bg-primary active-status"></label>
+                }
+                else
+                {
+                    @if (item.DealStatus.Equals(Domain.DealStatus.Cancelled))
+                    {
+
+                        <label class="bg-warning active-status"></label>
+                    }
+                    else
+                    {
+                        <label class="bg-success active-status"></label>
+                    }
+                }
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+               
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                @if(item.DealStatus.Equals(Domain.DealStatus.Active)) {
+                <a asp-action="Cancel" asp-route-id="@item.Id">Cancel</a>
+                }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

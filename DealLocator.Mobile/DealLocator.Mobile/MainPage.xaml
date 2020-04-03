@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DealLocator.Mobile.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            x:Name="logoutButton"
+            Clicked="OnLogoutButtonClicked"
+            Text="Logout" />    
+            <ToolbarItem
+            x:Name="FiltersButton"
+            Clicked="FiltersButton_Clicked"
+            Text="Filters" />       
+    </ContentPage.ToolbarItems>
+    <Button
+        Clicked="DealButton_Clicked"
+        HorizontalOptions="Center"
+        Text="Find Deals"
+        VerticalOptions="Center" />
+
+</ContentPage>

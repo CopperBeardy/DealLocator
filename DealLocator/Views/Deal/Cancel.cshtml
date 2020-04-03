@@ -1,0 +1,58 @@
+﻿@model Domain.Deal
+
+@{
+    ViewData["Title"] = "Cancel";
+}
+
+<h1>Cancel</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Deal</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Duration)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Duration)
+        </dd>
+              
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DealStatus)
+        </dt>
+        <dd class="col-sm-10">
+            <label class="bg-primary active-status" ></label>
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+    </dl>
+    
+    <form asp-action="Cancel">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Cancel" class="btn btn-danger" /> |
+        <a asp-action="Index" asp-route-id="@Model.BusinessId">Back to List</a>
+    </form>
+</div>

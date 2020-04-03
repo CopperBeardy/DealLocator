@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DealLocator.Mobile.FiltersPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:range="clr-namespace:Syncfusion.SfRangeSlider.XForms;assembly=Syncfusion.SfRangeSlider.XForms"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label
+                Margin="0,15"
+                FontAttributes="Bold"
+                FontSize="Large"
+                HorizontalOptions="Center"
+                Text="Search Filters" />
+            <StackLayout Margin="0,0,0,20">
+                <Label
+                    FontSize="Medium"
+                    HorizontalOptions="Center"
+                    Text="How far do you want to look for deals ?" />
+                <range:SfRangeSlider
+                    x:Name="rangeSlider"
+                    Maximum="10"
+                    Minimum="1"
+                    Orientation="Horizontal"
+                    RangeStart="1"
+                    ShowRange="false"
+                    ShowValueLabel="True"
+                    SnapsTo="Ticks"
+                    TickFrequency="1"
+                    TrackThickness="10"
+                    ValuePlacement="BottomRight" />
+            </StackLayout>
+            <StackLayout>
+                <Label
+                    FontSize="Medium"
+                    HorizontalOptions="Center"
+                    Text="What Type of deal are you looking for?" />
+
+                <ListView x:Name="categories" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Button
+                    x:Name="Cancel"
+                    Margin="10"
+                    BackgroundColor="Red"
+                    Clicked="Cancel_Clicked"
+                    HorizontalOptions="FillAndExpand"
+                    Text="Cancel" />
+                <Button
+                    x:Name="Ok"
+                    Margin="10"
+                    BackgroundColor="Green"
+                    Clicked="Ok_Clicked"
+                    HorizontalOptions="FillAndExpand"
+                    Text="Ok" />
+
+            </StackLayout>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>
